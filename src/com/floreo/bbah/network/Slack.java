@@ -19,6 +19,10 @@ public class Slack {
     private static final String ENDPOINT_LIST_MESSAGES = "channels.history";
     private static final String ENDPOINT_POST_MESSAGE = "chat.postMessage";
     private static final String ENDPOINT_DELETE_MESSAGE = "chat.delete";
+    private static final String STATE = "";
+    private static final String SPEAKING_OF = "&text=Speaking%20of%20" + STATE + "%2C%20its%2082%20degrees%20there%20today";
+    private static final String ICON_URL = "https%3A%2F%2Fimage.shutterstock.com%2Fimage-vector%2Fillustration-little-robot-thug-standing-600w-1369508447.jpg";
+    private static final String USER_NAME = "Big_Bot_Homie";
 
     public static final String BOTS_CHANNEL_ID = "G012BTGLPN0";
 
@@ -74,7 +78,7 @@ public class Slack {
             throw new RuntimeException(e);
         }
 
-        URL sendMessageUrl = HTTPS.stringToURL(BASE_URL + ENDPOINT_POST_MESSAGE + "?token=" + API_KEY + "&channel=" + BOTS_CHANNEL_ID + "&text=" + messageText);
+        URL sendMessageUrl = HTTPS.stringToURL(BASE_URL + ENDPOINT_POST_MESSAGE + "?token=" + API_KEY + "&channel=" + BOTS_CHANNEL_ID + "&text=" + messageText + "&icon_url=" + ICON_URL + "&username=" + USER_NAME);
 
         return new SendMessageResponse(HTTPS.get(sendMessageUrl));
     }

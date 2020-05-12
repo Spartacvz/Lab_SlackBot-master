@@ -5,3 +5,4 @@ out/
 *.iml
 *.iws
 api_token.txt
+weatherApiToken.txt
